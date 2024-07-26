@@ -1,15 +1,3 @@
-# 🚀 Welcome to your new awesome project!
+[![Actions Status](https://github.com/Disielsida/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Disielsida/frontend-project-11/actions)
 
-This project has been created using **webpack-cli**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+[![Maintainability](https://api.codeclimate.com/v1/badges/8ea535b5f39b34970830/maintainability)](https://codeclimate.com/github/Disielsida/frontend-project-11/maintainability)
