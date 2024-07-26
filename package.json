@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx webpack --mode production",
-    "serve": "npx webpack serve --mode development"
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development"
   },
   "author": "Andrei",
   "license": "ISC",
