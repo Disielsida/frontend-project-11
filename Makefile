@@ -7,11 +7,8 @@ lint:
 test:
 	npx jest
 
-buildDev:
-	npm run build:dev
-
-buildProd:
-	npm run build:prod
+build:
+	npm run build
 
 serve:
 	npm run serve
