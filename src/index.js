@@ -2,12 +2,6 @@ import data from './data.js';
 import './style.scss';
 import 'bootstrap';
 
-const root = document.getElementById('app');
+const dataDouble = data.push(2);
 
-data.forEach((element) => {
-  const item = document.createElement('div');
-  item.textContent = element;
-  item.classList.add('item');
-
-  root.appendChild(item);
-});
+export default dataDouble;
