@@ -27,7 +27,6 @@ module.exports = {
         },
       ],
     }), */
-
   ],
   module: {
     rules: [
@@ -39,14 +38,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              // Опции для sass-loader
-              sassOptions: {
-                // Опции для sass
-                outputStyle: 'compressed', // Для минификации CSS
-              },
-              // Опции, специфичные для sass-loader
-              // Например, чтобы игнорировать предупреждения о смешанных объявлениях
-              sourceMap: true, // Включить карты исходников
+              sourceMap: true,
             },
           },
         ],
@@ -57,6 +49,10 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
       },
     ],
@@ -71,4 +67,5 @@ module.exports = {
     open: true,
     allowedHosts: 'all',
   },
+  devtool: 'source-map',
 };
