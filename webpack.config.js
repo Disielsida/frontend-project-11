@@ -27,6 +27,7 @@ module.exports = {
         },
       ],
     }), */
+
   ],
   module: {
     rules: [
@@ -38,7 +39,11 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              sassOptions: {
+                outputStyle: 'compressed', // Для минификации CSS
+              },
+
+              sourceMap: true, // Включить карты исходников
             },
           },
         ],
@@ -49,10 +54,6 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
         type: 'asset/resource',
       },
     ],
@@ -67,5 +68,4 @@ module.exports = {
     open: true,
     allowedHosts: 'all',
   },
-  devtool: 'source-map',
 };
