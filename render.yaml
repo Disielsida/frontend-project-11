@@ -4,4 +4,4 @@ services:
     env: static
     buildCommand: npm run build
     startCommand: npm run start
-    githubRepo: your-github-username/your-repo-name
+    githubRepo: Disielsida/frontend-project-11
