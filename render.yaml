@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: rss-reader
+    env: static
+    buildCommand: npm run build
+    startCommand: npm run start
+    githubRepo: your-github-username/your-repo-name
