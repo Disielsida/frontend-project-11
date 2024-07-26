@@ -10,5 +10,5 @@ test:
 build:
 	npm run build
 
-serve:
-	npm run serve
+start:
+	npm run start
