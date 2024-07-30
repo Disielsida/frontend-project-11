@@ -7,7 +7,7 @@ const state = {
     data: {
       url: '',
     },
-    error: '',
+    error: 0,
   },
   feeds: [],
 };
