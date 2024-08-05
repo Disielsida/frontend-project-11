@@ -21,5 +21,5 @@ export default (data) => {
     return { postTitle, postDescription, link };
   });
 
-  return { feed, posts, document };
+  return { feed, posts };
 };

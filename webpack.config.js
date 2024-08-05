@@ -40,10 +40,10 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sassOptions: {
-                outputStyle: 'compressed', // Для минификации CSS
+                outputStyle: 'compressed',
               },
 
-              sourceMap: true, // Включить карты исходников
+              sourceMap: true,
             },
           },
         ],

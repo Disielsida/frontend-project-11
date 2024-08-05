@@ -10,6 +10,8 @@ export default {
         unknown: 'Неизвестная ошибка',
       },
       success: 'RSS успешно загружен',
+      feeds: 'Фиды',
+      posts: 'Посты',
     },
   },
 };

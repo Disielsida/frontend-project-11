@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 import i18next from 'i18next';
+import { nanoid } from 'nanoid';
 import watcher from './view.js';
 import resources from './locales/index.js';
 import parser from './parser.js';
@@ -19,9 +20,10 @@ const state = {
 };
 
 const validate = (url, feeds) => {
+  const feedsUrls = feeds.map((feed) => feed.url);
   const schema = yup.string().url('errors.notValid')
     .required('errors.emptyField')
-    .notOneOf(feeds, 'errors.hasAlready');
+    .notOneOf(feedsUrls, 'errors.hasAlready');
 
   return schema.validate(url)
     .then(() => {})
@@ -31,19 +33,14 @@ const validate = (url, feeds) => {
 const loading = (url, watchedState) => {
   proxyAPI(url)
     .then((data) => {
-      const { feed, posts, document } = parser(data);
-      console.log(feed);
-      console.log(posts);
-      console.log(document);
+      const { feed, posts } = parser(data);
+      const feedId = nanoid();
+      const postsWithId = posts.map((post) => ({ id: nanoid(), feedId, ...post }));
+      watchedState.feeds.unshift({ id: feedId, url, ...feed });
+      watchedState.posts.unshift(...postsWithId);
       watchedState.loadingProcess.status = 'success';
     })
     .catch((error) => {
-      /* if (err.message === 'errors.withoutRss') {
-        console.log(i18nextInstance.t(err.message));
-      }
-      if (err.message === 'errors.network') {
-        console.log(i18nextInstance.t(err.message));
-      } */
       watchedState.loadingProcess.error = error.message;
       watchedState.loadingProcess.status = 'failed';
     });
@@ -55,6 +52,8 @@ export default () => {
     input: document.querySelector('#url-input'),
     feedback: document.querySelector('.feedback'),
     button: document.querySelector('[aria-label="add"]'),
+    feedsContainer: document.querySelector('.feeds'),
+    postsContainer: document.querySelector('.posts'),
   };
 
   const i18nextInstance = i18next.createInstance();
