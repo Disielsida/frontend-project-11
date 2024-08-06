@@ -103,6 +103,8 @@ const postsRender = (state, elements, i18nextInstance) => {
 
   const list = postsContainer.querySelector('ul');
 
+  list.innerHTML = '';
+
   posts.forEach((post) => {
     const li = document.createElement('li');
     li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start', 'border-0', 'border-end-0');

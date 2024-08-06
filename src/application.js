@@ -46,6 +46,30 @@ const loading = (url, watchedState) => {
     });
 };
 
+const checkNewContent = (watchedState) => {
+  const { feeds, posts } = watchedState;
+
+  const promises = feeds.map((feed) => proxyAPI(feed.url)
+    .then((data) => {
+      const { posts: newPosts } = parser(data);
+      const postLinks = posts.map((post) => post.link);
+
+      const feedId = feed.id;
+
+      const newUniquePosts = newPosts.filter((post) => !postLinks.includes(post.link));
+
+      if (newUniquePosts.length > 0) {
+        const newPostsWithId = newUniquePosts.map((post) => ({ id: nanoid(), feedId, ...post }));
+        watchedState.posts.unshift(...newPostsWithId);
+      }
+    })
+    .catch((error) => console.error(error)));
+
+  Promise.all(promises).then(() => {
+    setTimeout(() => checkNewContent(watchedState), 5000);
+  });
+};
+
 export default () => {
   const elements = {
     form: document.querySelector('.rss-form'),
@@ -84,5 +108,6 @@ export default () => {
           }
         });
       }));
+      checkNewContent(watchedState);
     });
 };
