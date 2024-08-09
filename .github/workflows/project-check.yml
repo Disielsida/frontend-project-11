@@ -12,5 +12,4 @@ jobs:
     - run: make install
     - run: make start
     - run: make build
-    - run: make start
    
