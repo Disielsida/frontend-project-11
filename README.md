@@ -1,17 +1,21 @@
 # RSS Aggregator
 
-RSS Aggregator — это сервис для агрегации RSS-потоков, позволяющий удобно читать разнообразные источники, такие как блоги. Проект позволяет добавлять неограниченное количество RSS-лент, обновляет их сам и добавляет новые записи в общий поток.
+RSS Aggregator is a service for aggregating RSS feeds, making it convenient to read a variety of sources. The project allows users to add an unlimited number of RSS feeds, automatically updates them, and adds new entries to a unified feed.
 
-## Демо
+## Demo
 
-Вы можете посмотреть работающую версию проекта по следующей [ссылке](https://rss-reader-jfot.onrender.com).
+You can check out the live version of the project at the following [link](https://rss-reader-jfot.onrender.com).
 
-## Статус сборки
+## Build Status
 
 [![Actions Status](https://github.com/Disielsida/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Disielsida/frontend-project-11/actions)
 
-## Поддерживаемость кода
+## Code Maintainability
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ea535b5f39b34970830/maintainability)](https://codeclimate.com/github/Disielsida/frontend-project-11/maintainability)
 
-## Установка и запуск
+## Installation and Setup
+
+1. **git clone  https://github.com/Disielsida/frontend-project-11.git**: 
+2. **make install**
+3. **make start**
