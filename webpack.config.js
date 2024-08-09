@@ -67,5 +67,6 @@ module.exports = {
     hot: true,
     open: true,
     allowedHosts: 'all',
+    overlay: false,
   },
 };
