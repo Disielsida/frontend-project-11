@@ -94,7 +94,7 @@ const feedsRender = (state, elements, i18nextInstance) => {
 
 const postsRender = (state, elements, i18nextInstance) => {
   const { postsContainer } = elements;
-  const { posts } = state;
+  const { posts, modal } = state;
 
   if (postsContainer.childNodes.length === 0) {
     const cardContainer = makeCardContainer(i18nextInstance.t('posts'));
@@ -111,7 +111,13 @@ const postsRender = (state, elements, i18nextInstance) => {
 
     const link = document.createElement('a');
     link.setAttribute('href', `${post.link}`);
-    link.classList.add('fw-bold');
+
+    if (modal.readPostsId.has(post.id)) {
+      link.classList.add('fw-normal', 'link-secondary');
+    } else {
+      link.classList.add('fw-bold');
+    }
+
     link.setAttribute('data-id', `${post.id}`);
     link.setAttribute('data-feed-id', `${post.feedId}`);
     link.setAttribute('target', '_blank');
@@ -124,12 +130,27 @@ const postsRender = (state, elements, i18nextInstance) => {
     button.setAttribute('data-id', `${post.id}`);
     button.setAttribute('data-bs-toggle', 'modal');
     button.setAttribute('data-bs-target', '#modal');
-    button.textContent = 'Просмотр';
+    button.textContent = i18nextInstance.t('view');
 
     li.append(link, button);
 
     list.append(li);
   });
+};
+
+const modalRender = (state, elements) => {
+  const { modalWindow } = elements;
+  const { posts, modal } = state;
+
+  const modalTitle = modalWindow.querySelector('.modal-title');
+  const modalDescription = modalWindow.querySelector('.modal-body');
+  const modalReadButton = modalWindow.querySelector('[role="button"]');
+
+  const needPost = posts.find((post) => post.id === modal.viewedId);
+
+  modalTitle.textContent = needPost.postTitle;
+  modalDescription.textContent = needPost.postDescription;
+  modalReadButton.setAttribute('href', `${needPost.link}`);
 };
 
 export default (state, elements, i18nextInstance) => onChange(state, (path, value) => {
@@ -145,6 +166,10 @@ export default (state, elements, i18nextInstance) => onChange(state, (path, valu
       break;
     case 'posts':
       postsRender(state, elements, i18nextInstance);
+      break;
+    case 'modal.viewedId':
+      postsRender(state, elements, i18nextInstance);
+      modalRender(state, elements);
       break;
     default:
       break;

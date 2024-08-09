@@ -17,6 +17,10 @@ const state = {
   },
   feeds: [],
   posts: [],
+  modal: {
+    readPostsId: new Set(),
+    viewedId: '',
+  },
 };
 
 const validate = (url, feeds) => {
@@ -78,6 +82,7 @@ export default () => {
     button: document.querySelector('[aria-label="add"]'),
     feedsContainer: document.querySelector('.feeds'),
     postsContainer: document.querySelector('.posts'),
+    modalWindow: document.querySelector('.modal'),
   };
 
   const i18nextInstance = i18next.createInstance();
@@ -108,6 +113,16 @@ export default () => {
           }
         });
       }));
+
+      elements.postsContainer.addEventListener('click', (event) => {
+        const { id } = event.target.dataset;
+        if (id) {
+          watchedState.modal.readPostsId.add(id);
+          console.log(state);
+          watchedState.modal.viewedId = id;
+        }
+      });
+
       checkNewContent(watchedState);
     });
 };
