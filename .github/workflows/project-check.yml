@@ -10,6 +10,5 @@ jobs:
     - run: make install
     - run: make lint
     - run: make install
-    - run: make start
     - run: make build
    
