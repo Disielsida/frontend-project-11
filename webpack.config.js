@@ -67,6 +67,11 @@ module.exports = {
     hot: true,
     open: true,
     allowedHosts: 'all',
-    overlay: false,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+      },
+    },
   },
 };
