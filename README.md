@@ -19,3 +19,12 @@ You can check out the live version of the project at the following [link](https:
 1. **git clone  https://github.com/Disielsida/frontend-project-11.git**: 
 2. **make install**
 3. **make start**
+
+Now you can access the RSS Aggregator locally on your computer!
+
+## Screenshots
+
+![RSS Aggregator Screenshot](./images/main-function.png)
+![RSS Aggregator Screenshot](./images/rnot-valid.png)
+![RSS Aggregator Screenshot](./images/wrong-format.png)
+
