@@ -24,7 +24,12 @@ Now you can access the RSS Aggregator locally on your computer!
 
 ## Screenshots
 
+### Main function:
 ![RSS Aggregator Screenshot](./images/main-function.png)
-![RSS Aggregator Screenshot](./images/rnot-valid.png)
+
+### Working with invalid link:
+![RSS Aggregator Screenshot](./images/not-valid.png)
+
+### Working with wrong format:
 ![RSS Aggregator Screenshot](./images/wrong-format.png)
 
