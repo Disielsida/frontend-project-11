@@ -35,6 +35,13 @@ const validate = (url, feeds) => {
 };
 
 const loading = (url, watchedState) => {
+  const isDuplicate = watchedState.feeds.some((feed) => feed.url === url);
+  if (isDuplicate) {
+    watchedState.form.error = 'errors.hasAlready';
+    watchedState.form.status = 'failed';
+    return;
+  }
+
   proxyAPI(url)
     .then((data) => {
       const { feed, posts } = parser(data);
