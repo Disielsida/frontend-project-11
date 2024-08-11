@@ -33,3 +33,4 @@ Now you can access the RSS Aggregator locally on your computer!
 ### Working with wrong format:
 ![RSS Aggregator Screenshot](./images/wrong-format.png)
 
+
