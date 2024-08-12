@@ -10,11 +10,11 @@ const validateRender = (state, elements, value, i18nextInstance) => {
     input.removeAttribute('disabled');
     button.classList.remove('disabled');
   } else if (value === 'loading') {
+    button.classList.add('disabled');
+    input.setAttribute('disabled', '');
     feedback.textContent = '';
     feedback.classList.remove('text-danger');
     input.classList.remove('is-invalid');
-    input.setAttribute('disabled', '');
-    button.classList.add('disabled');
   }
 };
 

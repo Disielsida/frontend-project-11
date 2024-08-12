@@ -3,8 +3,9 @@ export default (data) => {
   const document = parser.parseFromString(data, 'application/xml');
   const parserError = document.querySelector('parsererror');
 
-  if (document.contains(parserError)) {
+  if (parserError) {
     const error = new Error('errors.withoutRss');
+    error.details = parserError.textContent;
     throw error;
   }
 

@@ -8,18 +8,18 @@ import proxyAPI from './proxyAPI.js';
 
 const state = {
   form: {
-    status: '',
-    error: '',
+    status: 'without data',
+    error: null,
   },
   loadingProcess: {
-    status: '',
-    error: '',
+    status: 'without data',
+    error: null,
   },
   feeds: [],
   posts: [],
   modal: {
     readPostsId: new Set(),
-    viewedId: '',
+    viewedId: null,
   },
 };
 
@@ -34,7 +34,7 @@ const validate = (url, feeds) => {
     .catch((error) => error.message);
 };
 
-const loading = (url, watchedState) => {
+const uploadContent = (url, watchedState) => {
   const isDuplicate = watchedState.feeds.some((feed) => feed.url === url);
   if (isDuplicate) {
     watchedState.form.error = 'errors.hasAlready';
@@ -53,12 +53,14 @@ const loading = (url, watchedState) => {
     })
     .catch((error) => {
       watchedState.loadingProcess.error = error.message;
+      console.log(error);
       watchedState.loadingProcess.status = 'failed';
     });
 };
 
 const checkNewContent = (watchedState) => {
   const { feeds, posts } = watchedState;
+  const interval = 5000;
 
   const promises = feeds.map((feed) => proxyAPI(feed.url)
     .then((data) => {
@@ -77,7 +79,7 @@ const checkNewContent = (watchedState) => {
     .catch((error) => console.error(error)));
 
   Promise.all(promises).then(() => {
-    setTimeout(() => checkNewContent(watchedState), 5000);
+    setTimeout(() => checkNewContent(watchedState), interval);
   });
 };
 
@@ -116,7 +118,7 @@ export default () => {
             watchedState.form.error = '';
             watchedState.form.status = 'loading';
             watchedState.loadingProcess.status = '';
-            loading(url, watchedState);
+            uploadContent(url, watchedState);
           }
         });
       }));
@@ -125,7 +127,6 @@ export default () => {
         const { id } = event.target.dataset;
         if (id) {
           watchedState.modal.readPostsId.add(id);
-          console.log(state);
           watchedState.modal.viewedId = id;
         }
       });
