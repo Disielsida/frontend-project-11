@@ -73,7 +73,7 @@ const feedsRender = (state, elements, i18nextInstance) => {
 
   list.innerHTML = '';
 
-  feeds.forEach((feed) => {
+  const items = feeds.map((feed) => {
     const li = document.createElement('li');
     li.classList.add('list-group-item', 'border-0', 'border-end-0');
     li.setAttribute('data-id', `${feed.id}`);
@@ -88,8 +88,10 @@ const feedsRender = (state, elements, i18nextInstance) => {
 
     li.append(titleEl, descriptionEl);
 
-    list.append(li);
+    return li;
   });
+
+  list.append(...items);
 };
 
 const postsRender = (state, elements, i18nextInstance) => {
@@ -105,7 +107,7 @@ const postsRender = (state, elements, i18nextInstance) => {
 
   list.innerHTML = '';
 
-  posts.forEach((post) => {
+  const items = posts.map((post) => {
     const li = document.createElement('li');
     li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-start', 'border-0', 'border-end-0');
 
@@ -134,8 +136,10 @@ const postsRender = (state, elements, i18nextInstance) => {
 
     li.append(link, button);
 
-    list.append(li);
+    return li;
   });
+
+  list.append(...items);
 };
 
 const modalRender = (state, elements) => {
