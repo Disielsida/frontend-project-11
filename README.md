@@ -10,6 +10,8 @@ You can check out the live version of the project at the following [link](https:
 
 [![Actions Status](https://github.com/Disielsida/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Disielsida/frontend-project-11/actions)
 
+[![project-check](https://github.com/Disielsida/frontend-project-11/actions/workflows/project-check.yml/badge.svg)](https://github.com/Disielsida/frontend-project-11/actions/workflows/project-check.yml)
+
 ## Code Maintainability
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/8ea535b5f39b34970830/maintainability)](https://codeclimate.com/github/Disielsida/frontend-project-11/maintainability)
